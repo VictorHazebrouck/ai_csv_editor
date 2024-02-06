@@ -1,0 +1,47 @@
+<div class="main-container">
+    <h1>CSV file parser</h1>
+    <form action="/api/generate" method="post" enctype="multipart/form-data">
+        <input type="file" name="CSV" id="csv-file-input" accept=".csv" />
+        <h3>File context</h3>
+        <textarea
+            type="text"
+            class="input txt"
+            name="request_context"
+            placeholder="Context..."
+        ></textarea>
+        <div class="new-columns-container">
+            <div class="title-container">
+                <h3>New columns</h3>
+                <button
+                    hx-get="/public/column-temp"
+                    hx-trigger="click"
+                    hx-target="#new-columns"
+                    hx-swap="beforeend"
+                >
+                    Add column
+                </button>
+            </div>
+            <div class="columns" id="new-columns">
+                <div class="column-temp">
+                    <input
+                        type="text"
+                        class="input title"
+                        placeholder="Title..."
+                        name="new_column_title[]"
+                    />
+                    <textarea
+                        type="text"
+                        class="input txt"
+                        placeholder="Prompt..."
+                        name="new_column_prompt[]"
+                    ></textarea>
+                </div>
+            </div>
+        </div>
+        <button type="submit">Generate</button>
+    </form>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('public.static', filename='style.css') }}"
+    />
+</div>

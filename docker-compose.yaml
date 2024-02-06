@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/code
+    command: python run.py
+    restart: always
+    depends_on:
+      - ollama
+    networks:
+      - ollama-docker
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    volumes:
+      - .:/code
+      - ./ollama/ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: always
+    networks:
+      - ollama-docker
+
+networks:
+  ollama-docker:
+    external: false
