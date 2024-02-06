@@ -3,7 +3,7 @@ from werkzeug.datastructures import FileStorage
 import pandas as pd
 from pandas import DataFrame
 from io import BytesIO
-from app.ollama.modules import ask_ai
+from app.ollama_tools.modules import ask_ai
 
 main = Blueprint('main', __name__)
 
