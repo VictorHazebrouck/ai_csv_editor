@@ -33,7 +33,7 @@ def api_generate():
 
     #loop through each row of the table
     for index, row in dataFrame.iterrows():
-        row_information = "|".join(str(value) for value in row)
+        row_information: str = "|".join(str(value) for value in row)
 
         #for each row ask ai to fill new columns with provided prompt, row info, context
         for column_title, column_prompt in zip(new_columns_titles, new_culumns_prompts):
